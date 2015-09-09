@@ -13,7 +13,9 @@ Latency is also an important factor, but in our tests, we've found that bandwidt
 is a good proxy for both.
 
 The Network Connection Class library takes care of spikes using a moving average
-of the incoming samples:
+of the incoming samples, and also applies some hysteresis (both with a minimum
+number of samples and amount the average has to cross a boundary before triggering
+a bucket change):
 ![Bandwidth Averaging](https://github.com/facebook/network-connection-class/raw/master/docs/images/bandwidth_averaging.png)
 
 ## Integration
@@ -21,14 +23,14 @@ of the incoming samples:
 ### Download
 Download [the latest JARs](https://github.com/facebook/network-connection-class/releases/latest) or grab via Gradle:
 ```groovy
-compile 'com.facebook.network.connectionclass:connectionclass:1.0.0'
+compile 'com.facebook.network.connectionclass:connectionclass:1.0.1'
 ```
 or Maven:
 ```xml
 <dependency>
   <groupId>com.facebook.network.connectionclass</groupId>
   <artifactId>connectionclass</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -78,7 +80,7 @@ ConnectionClassManager.addBandwidth(bandwidth, time);
 See the `connectionclass-sample` project for more details.
 
 ## Improve Connection Class!
-See the CONTRIBUTING.md file for how to help out.
+See the [CONTRIBUTING.md](https://github.com/facebook/network-connection-class/blob/master/CONTRIBUTING.md) file for how to help out.
 
 ## License
 Connection Class is BSD-licensed. We also provide an additional patent grant.
